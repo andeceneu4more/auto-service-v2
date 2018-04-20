@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1523367018 source:d:\teme\dl 1\semestrul 2\poo\tema2\main.cpp
+	<cstring>
+	<string>
+	<iostream>
+	<fstream>
+	<cstdlib>
+
+1523884477 source:d:\projects\fmi dl\dl 1\semestrul 2\poo\tema2\main.cpp
+	<cstring>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<cstdlib>
+
