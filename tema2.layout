@@ -9,48 +9,12 @@
 	</File>
 	<File name="atelier.out" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1386" topLine="0" />
+			<Cursor1 position="1386" topLine="53" />
 		</Cursor>
 	</File>
 	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="42175" topLine="397" />
+			<Cursor1 position="42416" topLine="1559" />
 		</Cursor>
-		<Folding>
-			<Collapse line="23" />
-			<Collapse line="28" />
-			<Collapse line="33" />
-			<Collapse line="77" />
-			<Collapse line="288" />
-			<Collapse line="294" />
-			<Collapse line="300" />
-			<Collapse line="306" />
-			<Collapse line="331" />
-			<Collapse line="336" />
-			<Collapse line="344" />
-			<Collapse line="352" />
-			<Collapse line="361" />
-			<Collapse line="398" />
-			<Collapse line="446" />
-			<Collapse line="488" />
-			<Collapse line="514" />
-			<Collapse line="526" />
-			<Collapse line="541" />
-			<Collapse line="556" />
-			<Collapse line="572" />
-			<Collapse line="653" />
-			<Collapse line="763" />
-			<Collapse line="779" />
-			<Collapse line="896" />
-			<Collapse line="914" />
-			<Collapse line="939" />
-			<Collapse line="958" />
-			<Collapse line="980" />
-			<Collapse line="1007" />
-			<Collapse line="1030" />
-			<Collapse line="1194" />
-			<Collapse line="1363" />
-			<Collapse line="1524" />
-		</Folding>
 	</File>
 </CodeBlocks_layout_file>
