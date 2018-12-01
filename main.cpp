@@ -9,12 +9,12 @@
 using namespace std;
 class reparatie
 {
-    bool _vopsire,  _schimbare;
+    bool _vopsire, _schimbare;
 public:
     reparatie(bool, bool);
     reparatie(reparatie&);
     ~reparatie();
-    reparatie& operator = (reparatie&);
+    reparatie& operator=(reparatie&);
     void vopsire(bool);
     void schimbare(bool);
     bool vopsire();
@@ -34,7 +34,7 @@ reparatie::~reparatie()
 {
     _vopsire = _schimbare = false;
 }
-reparatie& reparatie::operator = (reparatie &A)
+reparatie& reparatie::operator=(reparatie &A)
 {
     _vopsire = A._vopsire;
     _schimbare = A._schimbare;
@@ -60,14 +60,14 @@ bool reparatie::schimbare()
 }
 class tabla
 {
-    reparatie fata_st,  fata_dr,  spate_st,  spate_dr;
+    reparatie fata_st, fata_dr, spate_st, spate_dr;
 public:
 	static char s[10];
     tabla();
     tabla(reparatie, reparatie, reparatie, reparatie);
     tabla(tabla&);
     ~tabla();
-    tabla& operator = (tabla&);
+    tabla& operator=(tabla&);
     void citire(istream&, bool);
     int repara(int&, int&, int&, int);
     friend ostream& operator<<(ostream&, tabla&);
@@ -102,7 +102,7 @@ tabla::~tabla()
     spate_st.vopsire(false); spate_st.schimbare(false);
     spate_dr.vopsire(false); spate_dr.schimbare(false);
 }
-tabla& tabla::operator = (tabla &A)
+tabla& tabla::operator=(tabla &A)
 {
     fata_st = A.fata_st;
     fata_dr = A.fata_dr;
@@ -110,13 +110,13 @@ tabla& tabla::operator = (tabla &A)
     spate_dr = A.spate_dr;
     return (*this);
 }
-void tabla::citire(istream &in,  bool schimba)
+void tabla::citire(istream &in, bool schimba)
 {
 	char s[50];
-	in>>s;
+	in >> s;
     if (!strcmp(s, "fata"))
     {
-    	in>>s;
+    	in >> s;
         if (!strcmp(s, "stanga"))
         {
         	if (schimba)
@@ -136,7 +136,7 @@ void tabla::citire(istream &in,  bool schimba)
     else
     	if (!strcmp(s, "spate"))
     	{
-    		in>>s;
+    		in >> s;
     		if (!strcmp(s, "stanga"))
     		{
     			if (schimba)
@@ -154,7 +154,7 @@ void tabla::citire(istream &in,  bool schimba)
 				}
 		}
 }
-int tabla::repara(int &nr_ore,  int &nr_oameni,  int &suruburi,  int basePice)
+int tabla::repara(int &nr_ore, int &nr_oameni, int &suruburi, int basePice)
 {
 	int pret = 0;
 	if (fata_st.vopsire())
@@ -225,21 +225,21 @@ int tabla::repara(int &nr_ore,  int &nr_oameni,  int &suruburi,  int basePice)
 }
 ostream& operator<<(ostream& out, tabla &A)
 {
-    out<<"De vopsit "<<A.s<<" fata stanga "<<A.fata_st.vopsire()<<'\n';
-    out<<"De schimbat "<<A.s<<" fata stanga "<<A.fata_st.schimbare()<<'\n';
-    out<<"De vopsit "<<A.s<<" fata dreapta "<<A.fata_dr.vopsire()<<'\n';
-    out<<"De schimbat "<<A.s<<" fata dreapta "<<A.fata_dr.schimbare()<<'\n';
-    out<<"De vopsit "<<A.s<<" spate stanga "<<A.spate_st.vopsire()<<'\n';
-    out<<"De schimbat "<<A.s<<" spate stanga "<<A.spate_st.schimbare()<<'\n';
-    out<<"De vopsit "<<A.s<<" spate dreapta "<<A.spate_dr.vopsire()<<'\n';
-    out<<"De schimbat "<<A.s<<" spate dreapta "<<A.spate_dr.schimbare()<<'\n';
+    out << "De vopsit " << A.s << " fata stanga " << A.fata_st.vopsire() << '\n';
+    out << "De schimbat " << A.s << " fata stanga " << A.fata_st.schimbare() << '\n';
+    out << "De vopsit " << A.s << " fata dreapta " << A.fata_dr.vopsire() << '\n';
+    out << "De schimbat " << A.s << " fata dreapta " << A.fata_dr.schimbare() << '\n';
+    out << "De vopsit " << A.s << " spate stanga " << A.spate_st.vopsire() << '\n';
+    out << "De schimbat " << A.s << " spate stanga " << A.spate_st.schimbare() << '\n';
+    out << "De vopsit " << A.s << " spate dreapta " << A.spate_dr.vopsire() << '\n';
+    out << "De schimbat " << A.s << " spate dreapta " << A.spate_dr.schimbare() << '\n';
     return out;
 }
 void tabla::tastatura(bool schimba)
 {
 	int x;
-	cout<<"Alegeti partea afectata\n1.Fata stanga\n2.Fata dreapta\n3.Spate stanga\n4.Spate dreapta\n";
-	cin>>x;
+	cout << "Alegeti partea afectata\n1.Fata stanga\n2.Fata dreapta\n3.Spate stanga\n4.Spate dreapta\n";
+	cin >> x;
 	switch(x)
 	{
 		case 1:
@@ -279,7 +279,7 @@ public:
 	vehicul(float, bool, int);
 	vehicul(vehicul&);
 	virtual ~vehicul();
-	virtual vehicul& operator = (vehicul&);
+	virtual vehicul& operator=(vehicul&);
 	virtual float repara() = 0;
     virtual void tastatura() = 0;
     static void numar();
@@ -303,7 +303,7 @@ vehicul::~vehicul()
 	defectiuneCapitala = false;
 	roti = 0;
 }
-vehicul& vehicul::operator = (vehicul &A)
+vehicul& vehicul::operator=(vehicul &A)
 {
 	pret = A.pret;
 	defectiuneCapitala = A.defectiuneCapitala;
@@ -312,7 +312,7 @@ vehicul& vehicul::operator = (vehicul &A)
 }
 void vehicul::numar()
 {
-    cout<<"Am citit "<<n<<" obiecte"<<'\n';
+    cout << "Am citit " << n << " obiecte" << '\n';
 }
 class bicicleta:public vehicul
 {
@@ -322,7 +322,7 @@ public:
 	bicicleta(float, bool, int, bool, bool);
 	bicicleta(bicicleta&);
 	~bicicleta();
-	bicicleta& operator = (bicicleta&);
+	bicicleta& operator=(bicicleta&);
 	float repara();
 	void tastatura();
 	friend istream& operator>>(istream&, bicicleta&);
@@ -349,7 +349,7 @@ bicicleta::~bicicleta()
 	ghidon = false;
 	lant = false;
 }
-bicicleta& bicicleta::operator = (bicicleta &A)
+bicicleta& bicicleta::operator=(bicicleta &A)
 {
 	pret = A.pret;
 	defectiuneCapitala = A.defectiuneCapitala;
@@ -398,39 +398,39 @@ float bicicleta::repara()
 void bicicleta::tastatura()
 {
 	int nn, n, x;
-	cout<<"Cate tipuri de defectiuni? ";
-	cin>>n;
+	cout << "Cate tipuri de defectiuni? ";
+	cin >> n;
 	for (; n && (!defectiuneCapitala); n--)
 	{
-		cout<<"Alegeti tipul de defectiune\n1.Frane\n2.Directie\n3.Defectiunea Capitala\n";
-        cin>>x;
+		cout << "Alegeti tipul de defectiune\n1.Frane\n2.Directie\n3.Defectiunea Capitala\n";
+        cin >> x;
         switch (x)
         {
             case 1://Frane
-            	cout<<"Cate probleme? ";
-            	cin>>nn;
+            	cout << "Cate probleme? ";
+            	cin >> nn;
             	for (; nn; nn--)
             	{
-               		cout<<"Alegeti tipul problemei\n1.Lant lipsa\n2.Lant tocit\n";
-                	cin>>x;
+               		cout << "Alegeti tipul problemei\n1.Lant lipsa\n2.Lant tocit\n";
+                	cin >> x;
                		lant = true;
             	}
             	break;
             case 2://Directie
-            	cout<<"Cate probleme? ";
-                cin>>nn;
+            	cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                	cout<<"Alegeti tipul problemei\n1.Ghidon stramb\n2.Roata stramba\n";
-	                cin>>x;
+                	cout << "Alegeti tipul problemei\n1.Ghidon stramb\n2.Roata stramba\n";
+	                cin >> x;
 	                switch (x)
 	                {
 	                    case 1:
 	                        ghidon = true;
 	                        break;
 	                    case 2:
-	                        cout<<"Cate roti? ";
-	                        cin>>x;
+	                        cout << "Cate roti? ";
+	                        cin >> x;
 	                        roti = x;
 	                        break;
 	                }
@@ -447,7 +447,7 @@ istream& operator>>(istream &in, bicicleta &A)
 {
 	int nn, n;
 	string s;
-	in>>n;
+	in >> n;
 	in.ignore();
 	for (; n && (!A.defectiuneCapitala); n--)
 	{
@@ -455,7 +455,7 @@ istream& operator>>(istream &in, bicicleta &A)
         if (s == "Frane")
         {
             //Frane
-            in>>nn;
+            in >> nn;
             in.ignore();
             for (; nn; nn--)
             {
@@ -466,7 +466,7 @@ istream& operator>>(istream &in, bicicleta &A)
         else
             if (s == "Directie")
             {
-                in>>nn;
+                in >> nn;
                 in.ignore();
                 for (; nn; nn--)
                 {
@@ -475,7 +475,7 @@ istream& operator>>(istream &in, bicicleta &A)
                         A.ghidon = true;
                     else
                         if (s == "Roata stramba")
-	                        in>>A.roti;
+	                        in >> A.roti;
                 }
             }
             else
@@ -487,24 +487,24 @@ istream& operator>>(istream &in, bicicleta &A)
 }
 ostream& operator<<(ostream &out, bicicleta &A)
 {
-    out<<"Bicicleta\n";
-    out<<"Defectiunea Capitala "<<A.defectiuneCapitala<<'\n';
-    out<<"Lant "<<A.lant<<'\n';
-    out<<"Roti "<<A.roti<<'\n';
-    out<<"Ghidon "<<A.ghidon<<'\n';
-    out<<"Pret "<<A.pret<<'\n';
+    out << "Bicicleta\n";
+    out << "Defectiunea Capitala " << A.defectiuneCapitala << '\n';
+    out << "Lant " << A.lant << '\n';
+    out << "Roti " << A.roti << '\n';
+    out << "Ghidon " << A.ghidon << '\n';
+    out << "Pret " << A.pret << '\n';
     return out;
 }
 class motocicleta:public vehicul
 {
 private:
-	bool placute_fata,  placute_spate,  ulei,  ghidon,  vechi;
-	int arcuri,  amortizoare,  discuri, bujii;
+	bool placute_fata, placute_spate, ulei, ghidon, vechi;
+	int arcuri, amortizoare, discuri, bujii;
 public:
 	motocicleta(float, bool, int, bool, bool, bool, bool, bool, int, int, int, int);
 	motocicleta(motocicleta&);
 	~motocicleta();
-	motocicleta& operator = (motocicleta&);
+	motocicleta& operator=(motocicleta&);
 	float repara();
 	void tastatura();
 	friend istream& operator>>(istream&, motocicleta&);
@@ -553,7 +553,7 @@ motocicleta::~motocicleta()
 	discuri = 0;
 	bujii = 0;
 }
-motocicleta& motocicleta::operator = (motocicleta &A)
+motocicleta& motocicleta::operator=(motocicleta &A)
 {
 	pret = A.pret;
 	defectiuneCapitala = A.defectiuneCapitala;
@@ -647,13 +647,13 @@ float motocicleta::repara()
 	pret+=(nr_oameni * nr_ore * manopera);
 	if (vechi)
 		pret*=1.5;
-	//daca vehiculul este vechi,  reparatia costa mai mult
+	//daca vehiculul este vechi, reparatia costa mai mult
 	return pret;
 }
-istream& operator>>(istream &in,  motocicleta &A)
+istream& operator>>(istream &in, motocicleta &A)
 {
 	int n, nn;
-	in>>n;
+	in >> n;
 	in.ignore();
 	string s;
 	for (; n && (!A.defectiuneCapitala); n--)
@@ -661,7 +661,7 @@ istream& operator>>(istream &in,  motocicleta &A)
     	getline(in, s);
         if (s == "Frane")
 	    {
-	        in>>nn;
+	        in >> nn;
 	        in.ignore();
 	        for (; nn; nn--)
 	        {
@@ -674,7 +674,7 @@ istream& operator>>(istream &in,  motocicleta &A)
 	                else
 	                	if (s == "Discuri uzate")
 	                    {
-	                        in>>A.discuri;
+	                        in >> A.discuri;
 	                        in.ignore();
 	                    }
 	        }
@@ -682,20 +682,20 @@ istream& operator>>(istream &in,  motocicleta &A)
 	    else
 	    	if (s == "Suspensie")
 	    	{
-            	in>>nn;
+            	in >> nn;
             	in.ignore();
 	            for (; nn; nn--)
 	            {
 	            	getline(in, s);
 	                if (s == "Arc rupt")
 	                {
-	                	in>>A.arcuri;
+	                	in >> A.arcuri;
 	                	in.ignore();
 	                }
                     else
                     	if (s == "Amortizor defect")
                     	{
-                    		in>>A.amortizoare;
+                    		in >> A.amortizoare;
                     		in.ignore();
                     	}
 	            }
@@ -703,14 +703,14 @@ istream& operator>>(istream &in,  motocicleta &A)
             else
             	if (s == "Motor")
             	{
-	                in>>nn;
+	                in >> nn;
 	                in.ignore();
 	                for (; nn; nn--)
 	                {
 	                	getline(in, s);
 	                    if (s == "Bujii defecte")
 	                    {
-	                    	in>>A.bujii;
+	                    	in >> A.bujii;
 	                		in.ignore();
 	                    }
 	                    else
@@ -720,7 +720,7 @@ istream& operator>>(istream &in,  motocicleta &A)
             	else
             		if(s == "Directie")
 	                {
-	                	in>>nn;
+	                	in >> nn;
 	                	in.ignore();
 		                for (; nn; nn--)
 		                {
@@ -732,7 +732,7 @@ istream& operator>>(istream &in,  motocicleta &A)
 			                else
 			                	if (s == "Roata stramba")
 			                    {
-			                    	in>>A.roti;
+			                    	in >> A.roti;
 			                    	in.ignore();
 			                    }
 
@@ -741,7 +741,7 @@ istream& operator>>(istream &in,  motocicleta &A)
 			        else
 			        	if (s == "Noxe")
 			        	{
-			            	in>>nn;
+			            	in >> nn;
 			            	in.ignore();
 			                for (; nn; nn--)
 			                {
@@ -760,40 +760,40 @@ istream& operator>>(istream &in,  motocicleta &A)
     }
 	return in;
 }
-ostream& operator<<(ostream &out,  motocicleta &A)
+ostream& operator<<(ostream &out, motocicleta &A)
 {
-	out<<"Motocicleta\n";
-    out<<"Defectiunea Capitala "<<A.defectiuneCapitala<<"\n";
-    out<<"Placute fata "<<A.placute_fata<<"\n";
-    out<<"Placute spate "<<A.placute_spate<<"\n";
-    out<<"Discuri "<<A.discuri<<"\n";
-    out<<"Ulei "<<A.ulei<<"\n";
-    out<<"Ghidon "<<A.ghidon<<"\n";
-    out<<"Roti "<<A.roti<<"\n";
-    out<<"Arcuri "<<A.arcuri<<'\n';
-    out<<"Amortizoare "<<A.amortizoare<<'\n';
-    out<<"Bujii "<<A.bujii<<'\n';
-    out<<"Pret "<<A.pret<<'\n';
+	out << "Motocicleta\n";
+    out << "Defectiunea Capitala " << A.defectiuneCapitala << "\n";
+    out << "Placute fata " << A.placute_fata << "\n";
+    out << "Placute spate " << A.placute_spate << "\n";
+    out << "Discuri " << A.discuri << "\n";
+    out << "Ulei " << A.ulei << "\n";
+    out << "Ghidon " << A.ghidon << "\n";
+    out << "Roti " << A.roti << "\n";
+    out << "Arcuri " << A.arcuri << '\n';
+    out << "Amortizoare " << A.amortizoare << '\n';
+    out << "Bujii " << A.bujii << '\n';
+    out << "Pret " << A.pret << '\n';
     return out;
 }
 void motocicleta::tastatura()
 {
 	int x, n, nn;
-	cout<<"Cate tipuri de defectiuni? ";
-	cin>>n;
+	cout << "Cate tipuri de defectiuni? ";
+	cin >> n;
 	for (; n && (!defectiuneCapitala); n--)
     {
-        cout<<"Alegeti tipul de defectiune\n1.Frane\n2.Suspensie\n3.Motor\n4.Directie\n5.Noxe\n6.Defectiunea Capitala\n";
-        cin>>x;
+        cout << "Alegeti tipul de defectiune\n1.Frane\n2.Suspensie\n3.Motor\n4.Directie\n5.Noxe\n6.Defectiunea Capitala\n";
+        cin >> x;
         switch(x)
         {
             case 1://Frane
-	            cout<<"Cate probleme? ";
-	            cin>>nn;
+	            cout << "Cate probleme? ";
+	            cin >> nn;
 	            for (; nn; nn--)
 	            {
-	                cout<<"Alegeti tipul de problema\n1.Placute fata uzate\n2.Placute spate uzate\n3.Discuri uzate\n";
-	                cin>>x;
+	                cout << "Alegeti tipul de problema\n1.Placute fata uzate\n2.Placute spate uzate\n3.Discuri uzate\n";
+	                cin >> x;
 	                switch(x)
 	                {
 	                    case 1:
@@ -803,78 +803,78 @@ void motocicleta::tastatura()
 	                    	placute_spate = true;
 	                        break;
 	                    case 3:
-	                        cout<<"Cate discuri uzate? ";
-	                        cin>>x;
+	                        cout << "Cate discuri uzate? ";
+	                        cin >> x;
 	                        discuri = x;
 	                        break;
 	                }
 	            }
 	            break;
             case 2://Suspensie
-            	cout<<"Cate probleme? ";
-	            cin>>nn;
+            	cout << "Cate probleme? ";
+	            cin >> nn;
 	            for (; nn; nn--)
 	            {
-	            	cout<<"Alegeti tipul de problema\n1.Arc rupt\n2.Amortizor defect\n";
-	                cin>>x;
+	            	cout << "Alegeti tipul de problema\n1.Arc rupt\n2.Amortizor defect\n";
+	                cin >> x;
 	                switch(x)
 	                {
 	                	case 1:
-	                		cout<<"Cate arcuri? ";
-	                        cin>>x;
+	                		cout << "Cate arcuri? ";
+	                        cin >> x;
 	                        arcuri = x;
 	                        break;
                         case 2:
-                            cout<<"Cate amortizoare? ";
-	                        cin>>x;
+                            cout << "Cate amortizoare? ";
+	                        cin >> x;
 	                        arcuri = x;
 	                        break;
 	                }
 	            }
 	            break;
             case 3://Motor
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul de problema\n1.Nivel ulei scazut\n2.Motor topit\n3.Bujii defecte\n";
-                    cin>>x;
+                    cout << "Alegeti tipul de problema\n1.Nivel ulei scazut\n2.Motor topit\n3.Bujii defecte\n";
+                    cin >> x;
                     if (x == 3)
                     {
-                    	cout<<"Cate bujii? ";
-                    	cin>>bujii;
+                    	cout << "Cate bujii? ";
+                    	cin >> bujii;
                     }
                     else
                     	ulei = true;
                 }
                 break;
             case 4://Directie
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul problemei\n1.Ghidon stramb\n2.Roata stramba\n";
-	                cin>>x;
+                    cout << "Alegeti tipul problemei\n1.Ghidon stramb\n2.Roata stramba\n";
+	                cin >> x;
 	                switch (x)
 	                {
 	                    case 1:
 	                        ghidon = true;
 	                        break;
 	                    case 2:
-	                        cout<<"Cate roti? ";
-	                        cin>>x;
+	                        cout << "Cate roti? ";
+	                        cin >> x;
 	                        roti = x;
 	                        break;
 	                }
                 }
                 break;
             case 5://Noxe
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul problemei\n1.Vehiculul arde ulei\n2.Vehiculul este anterior anului 2000\n";
-                    cin>>x;
+                    cout << "Alegeti tipul problemei\n1.Vehiculul arde ulei\n2.Vehiculul este anterior anului 2000\n";
+                    cin >> x;
                     switch(x)
                     {
                         case 1:
@@ -896,8 +896,8 @@ void motocicleta::tastatura()
 class automobil:public vehicul
 {
 private:
-	bool placute_fata,  placute_spate,  ulei,  carburator, vechi;
-	int arcuri,  amortizoare,  discuri,  bujii;
+	bool placute_fata, placute_spate, ulei, carburator, vechi;
+	int arcuri, amortizoare, discuri, bujii;
 	reparatie bara_fata, bara_spate, capota, plafon, portbagaj;
 	tabla aripa, usa;
 public:
@@ -905,7 +905,7 @@ public:
 	automobil(reparatie, reparatie, reparatie, reparatie, reparatie, tabla, tabla, float, bool, int, bool, bool, bool, bool, bool, int, int, int, int);
 	automobil(automobil&);
 	~automobil();
-	automobil& operator = (automobil&);
+	automobil& operator=(automobil&);
 	float repara();
 	void tastatura();
 	friend istream& operator>>(istream&, automobil&);
@@ -1004,7 +1004,7 @@ automobil::~automobil()
     discuri = 0;
     bujii = 0;
 }
-automobil& automobil::operator = (automobil &A)
+automobil& automobil::operator=(automobil &A)
 {
     defectiuneCapitala = A.defectiuneCapitala;
     roti = A.roti;
@@ -1188,28 +1188,28 @@ float automobil::repara()
 	pret+=(nr_oameni * nr_ore * manopera);
 	if (vechi)
 		pret*=1.5;
-	//daca vehiculul este vechi,  reparatia costa mai mult
+	//daca vehiculul este vechi, reparatia costa mai mult
 	return pret;
 }
 void automobil::tastatura()
 {
 	int x, n, nn, m;
 	bool schimba;
-	cout<<"Cate tipuri de defectiuni? ";
-	cin>>n;
+	cout << "Cate tipuri de defectiuni? ";
+	cin >> n;
 	for (; n && (!defectiuneCapitala); n--)
     {
-        cout<<"Alegeti tipul de defectiune\n1.Frane\n2.Suspensie\n3.Motor\n4.Directie\n5.Noxe\n6.Caroserie\n7.Defectiunea Capitala\n";
-        cin>>x;
+        cout << "Alegeti tipul de defectiune\n1.Frane\n2.Suspensie\n3.Motor\n4.Directie\n5.Noxe\n6.Caroserie\n7.Defectiunea Capitala\n";
+        cin >> x;
         switch(x)
         {
         	case 1://Frane
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul de problema\n1.Placute fata uzate\n2.Placute spate uzate\n3.Discuri uzate\n";
-                    cin>>x;
+                    cout << "Alegeti tipul de problema\n1.Placute fata uzate\n2.Placute spate uzate\n3.Discuri uzate\n";
+                    cin >> x;
                     switch(x)
                     {
                         case 1:
@@ -1219,50 +1219,50 @@ void automobil::tastatura()
                         	placute_spate = true;
                         	break;
                         case 3:
-                        	cout<<"Cate discuri uzate? ";
-                        	cin>>x;
+                        	cout << "Cate discuri uzate? ";
+                        	cin >> x;
                         	discuri = x;
                         	break;
                     }
                 }
                 break;
             case 2://Suspensie
-            	cout<<"Cate probleme? ";
-	            cin>>nn;
+            	cout << "Cate probleme? ";
+	            cin >> nn;
 	            for (; nn; nn--)
 	            {
-	            	cout<<"Alegeti tipul de problema\n1.Arc rupt\n2.Amortizor defect\n";
-	                cin>>x;
+	            	cout << "Alegeti tipul de problema\n1.Arc rupt\n2.Amortizor defect\n";
+	                cin >> x;
 	                switch(x)
 	                {
 	                	case 1:
-	                		cout<<"Cate arcuri? ";
-	                        cin>>x;
+	                		cout << "Cate arcuri? ";
+	                        cin >> x;
 	                        arcuri = x;
 	                        break;
                         case 2:
-                            cout<<"Cate amortizoare? ";
-	                        cin>>x;
+                            cout << "Cate amortizoare? ";
+	                        cin >> x;
 	                        arcuri = x;
 	                        break;
 	                }
 	            }
 	            break;
             case 3://Motor
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul de problema\n1.Nivel ulei scazut\n2.Carburator murdar\n3.Motor topit\n4.Bujii defecte\n";
-                    cin>>x;
+                    cout << "Alegeti tipul de problema\n1.Nivel ulei scazut\n2.Carburator murdar\n3.Motor topit\n4.Bujii defecte\n";
+                    cin >> x;
                     switch(x)
                     {
                     	case 2:
                         	carburator = true;
                         	break;
                     	case 4:
-                    		cout<<"Cate bujii? ";
-                    		cin>>bujii;
+                    		cout << "Cate bujii? ";
+                    		cin >> bujii;
                     		break;
                         default:
                         	ulei = true;
@@ -1271,17 +1271,17 @@ void automobil::tastatura()
                 }
                 break;
             case 4://Directie
-                cout<<"Cate roti strambe? ";
-	            cin>>x;
+                cout << "Cate roti strambe? ";
+	            cin >> x;
 	            roti = x;
                 break;
             case 5://Noxe
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul problemei\n1.Vehiculul arde ulei\n2.Vehiculul este anterior anului 2000\n";
-                    cin>>x;
+                    cout << "Alegeti tipul problemei\n1.Vehiculul arde ulei\n2.Vehiculul este anterior anului 2000\n";
+                    cin >> x;
                     switch(x)
                     {
                         case 1:
@@ -1294,23 +1294,23 @@ void automobil::tastatura()
                 }
                 break;
             case 6://Caroserie
-                cout<<"Cate probleme? ";
-                cin>>nn;
+                cout << "Cate probleme? ";
+                cin >> nn;
                 for (; nn; nn--)
                 {
-                    cout<<"Alegeti tipul problemei\n1.Caroserie corodata de rugina\n2.Caroserie stramba\n";
-                    cin>>x;
+                    cout << "Alegeti tipul problemei\n1.Caroserie corodata de rugina\n2.Caroserie stramba\n";
+                    cin >> x;
                     if (x == 2)
                         schimba = true;
                     else
                         schimba = false;
-                    cout<<"Cate componente sunt afectate? ";
-                    cin>>m;
+                    cout << "Cate componente sunt afectate? ";
+                    cin >> m;
                     for (; m; m--)
                     {
-                        cout<<"Alegeti componentele afectate\n1.Bara din fata\n2.Bara din spate\n3.Capota\n4.Plafon\n5.Portbagaj\n";
-                        cout<<"6.Aripa\n7.Usa\n";
-                        cin>>x;
+                        cout << "Alegeti componentele afectate\n1.Bara din fata\n2.Bara din spate\n3.Capota\n4.Plafon\n5.Portbagaj\n";
+                        cout << "6.Aripa\n7.Usa\n";
+                        cin >> x;
                         switch (x)
                         {
                             case 1:
@@ -1365,14 +1365,14 @@ istream& operator>>(istream &in, automobil &A)
     int n, nn, m;
 	bool schimba;
 	string s;
-	in>>n;
+	in >> n;
 	in.ignore();
 	for (; n && (!A.defectiuneCapitala); n--)
     {
         getline(in, s);
         if (s == "Frane")
         {
-            in>>nn;
+            in >> nn;
             in.ignore();
             for (; nn; nn--)
             {
@@ -1384,7 +1384,7 @@ istream& operator>>(istream &in, automobil &A)
                         A.placute_spate = true;
                     else
                     {
-                        in>>A.discuri;
+                        in >> A.discuri;
                         in.ignore();
                     }
             }
@@ -1392,19 +1392,19 @@ istream& operator>>(istream &in, automobil &A)
         else
             if (s == "Suspensie")
             {
-            	in>>nn;
+            	in >> nn;
             	in.ignore();
 	            for (; nn; nn--)
 	            {
 	                getline(in, s);
 	                if (s == "Arc rupt")
                     {
-                        in>>A.arcuri;
+                        in >> A.arcuri;
                         in.ignore();
                     }
                     else
                     {
-                        in>>A.amortizoare;
+                        in >> A.amortizoare;
                         in.ignore();
                     }
 	            }
@@ -1412,7 +1412,7 @@ istream& operator>>(istream &in, automobil &A)
             else
                 if (s == "Motor")
                 {
-                    in>>nn;
+                    in >> nn;
                     in.ignore();
                     for (; nn; nn--)
                     {
@@ -1422,7 +1422,7 @@ istream& operator>>(istream &in, automobil &A)
                         else
                         	if (s == "Bujii defecte")
                         	{
-                        		in>>A.bujii;
+                        		in >> A.bujii;
                         		in.ignore();
                         	}
                             else
@@ -1432,13 +1432,13 @@ istream& operator>>(istream &in, automobil &A)
                 else
                     if (s == "Directie")
                     {
-                        in>>A.roti;
+                        in >> A.roti;
                         in.ignore();
                     }
                     else
                         if (s == "Noxe")
                         {
-                            in>>nn;
+                            in >> nn;
                             in.ignore();
                             for (; nn; nn--)
                             {
@@ -1452,7 +1452,7 @@ istream& operator>>(istream &in, automobil &A)
                         else
                             if (s == "Caroserie")
                             {
-                                in>>nn;
+                                in >> nn;
                                 in.ignore();
                                 for (; nn; nn--)
                                 {
@@ -1461,7 +1461,7 @@ istream& operator>>(istream &in, automobil &A)
                                         schimba = true;
                                     else
                                         schimba = false;
-                                    in>>m;
+                                    in >> m;
                                     in.ignore();
                                     for (; m; m--)
                                     {
@@ -1523,32 +1523,32 @@ istream& operator>>(istream &in, automobil &A)
 }
 ostream& operator<<(ostream &out, automobil &A)
 {
-    out<<"Automobil\n";
-    out<<"Defectiunea Capitala "<<A.defectiuneCapitala<<"\n";
-    out<<"Placute fata "<<A.placute_fata<<"\n";
-    out<<"Placute spate "<<A.placute_spate<<"\n";
-    out<<"Discuri "<<A.discuri<<"\n";
-    out<<"Ulei "<<A.ulei<<"\n";
-    out<<"Carburator "<<A.carburator<<"\n";
-    out<<"Roti "<<A.roti<<"\n";
-    out<<"Amortizoare "<<A.amortizoare<<'\n';
-    out<<"Arcuri "<<A.arcuri<<'\n';
-    out<<"Bujii "<<A.bujii<<'\n';
-    out<<"De vopsit Bara din fata "<<A.bara_fata.vopsire()<<'\n';
-    out<<"De schimbat Bara din fata "<<A.bara_fata.schimbare()<<'\n';
-    out<<"De vopsit Bara din spate "<<A.bara_spate.vopsire()<<'\n';
-    out<<"De schimbat Bara din spate "<<A.bara_spate.schimbare()<<'\n';
-    out<<"De vopsit Capota "<<A.capota.vopsire()<<'\n';
-    out<<"De schimbat Capota "<<A.capota.schimbare()<<'\n';
-    out<<"De vopsit Plafon "<<A.plafon.vopsire()<<'\n';
-    out<<"De schimbat Plafon "<<A.plafon.schimbare()<<'\n';
-    out<<"De vopsit Portbagaj "<<A.portbagaj.vopsire()<<'\n';
-    out<<"De schimbat Portbagaj "<<A.portbagaj.schimbare()<<'\n';
+    out << "Automobil\n";
+    out << "Defectiunea Capitala " << A.defectiuneCapitala << "\n";
+    out << "Placute fata " << A.placute_fata << "\n";
+    out << "Placute spate " << A.placute_spate << "\n";
+    out << "Discuri " << A.discuri << "\n";
+    out << "Ulei " << A.ulei << "\n";
+    out << "Carburator " << A.carburator << "\n";
+    out << "Roti " << A.roti << "\n";
+    out << "Amortizoare " << A.amortizoare << '\n';
+    out << "Arcuri " << A.arcuri << '\n';
+    out << "Bujii " << A.bujii << '\n';
+    out << "De vopsit Bara din fata " << A.bara_fata.vopsire() << '\n';
+    out << "De schimbat Bara din fata " << A.bara_fata.schimbare() << '\n';
+    out << "De vopsit Bara din spate " << A.bara_spate.vopsire() << '\n';
+    out << "De schimbat Bara din spate " << A.bara_spate.schimbare() << '\n';
+    out << "De vopsit Capota " << A.capota.vopsire() << '\n';
+    out << "De schimbat Capota " << A.capota.schimbare() << '\n';
+    out << "De vopsit Plafon " << A.plafon.vopsire() << '\n';
+    out << "De schimbat Plafon " << A.plafon.schimbare() << '\n';
+    out << "De vopsit Portbagaj " << A.portbagaj.vopsire() << '\n';
+    out << "De schimbat Portbagaj " << A.portbagaj.schimbare() << '\n';
     strcpy(tabla::s, "aripa");
-    out<<A.aripa;
+    out << A.aripa;
     strcpy(tabla::s, "usa");
-    out<<A.usa;
-    out<<A.pret<<'\n';
+    out << A.usa;
+    out << A.pret << '\n';
     return out;
 }
 int main()
@@ -1559,17 +1559,17 @@ int main()
     bicicleta  *B;
     motocicleta  *M;
     automobil  *A;
-    cout<<"Alegeti de unde sa se preia datele:\n1.de la tastatura\n2.din fisier\n";
-    cin>>ok;
+    cout << "Alegeti de unde sa se preia datele:\n1.de la tastatura\n2.din fisier\n";
+    cin >> ok;
     if (ok == 1)
     {
-        cout<<"Pentru fiecare dintre urmatoarele optiuni,  introduceti doar numarul optiuni!\n";
-        cout<<"Cate vehicule? ";
-        cin>>(vehicul::n);
+        cout << "Pentru fiecare dintre urmatoarele optiuni, introduceti doar numarul optiuni!\n";
+        cout << "Cate vehicule? ";
+        cin >> (vehicul::n);
         for (i = 1; i <= (vehicul::n); i++)
         {
-            cout<<"Alegeti tipul de vehicul\n1.Bicicleta\n2.Motocicleta\n3.Automobil\n";
-            cin>>ok;
+            cout << "Alegeti tipul de vehicul\n1.Bicicleta\n2.Motocicleta\n3.Automobil\n";
+            cin >> ok;
             switch(ok)
             {
                 case 1:
@@ -1591,7 +1591,7 @@ int main()
             total+=vec[i-1]->repara();
         }
         vehicul::numar();
-        cout<<"Pretul total va fi de "<<total<<" lei\n";
+        cout << "Pretul total va fi de " << total << " lei\n";
         for (i = 0; i < (vehicul::n); i++)
             delete vec[i];
         vec.clear();
@@ -1600,14 +1600,14 @@ int main()
     {
         ifstream fin("atelier.in");
         ofstream fout("atelier.out");
-        fin>>(vehicul::n);
+        fin >> (vehicul::n);
         for (i = 1; i <= (vehicul::n); i++)
         {
-            fin>>s;
+            fin >> s;
             if (s == "Bicicleta")
             {
                 B = new bicicleta();
-                fin>>(*B);
+                fin >> (*B);
                 vec.push_back(B);
             }
             else
@@ -1615,28 +1615,28 @@ int main()
                 if (s == "Motocicleta")
                 {
                     M = new motocicleta();
-                    fin>>(*M);
+                    fin >> (*M);
                     vec.push_back(M);
                 }
                 else
                     if (s == "Automobil")
                     {
                         A = new automobil();
-                        fin>>(*A);
+                        fin >> (*A);
                         vec.push_back(A);
                     }
 
             }
             total+=vec[i-1]->repara();
         }
-        fout<<"Pretul total va fi de "<<total<<" lei\n";
+        fout << "Pretul total va fi de " << total << " lei\n";
         for (i = 0; i < (vehicul::n); i++)
         {
             B = dynamic_cast<bicicleta*>(vec[i]);
             if (B)
             {
                 B = (bicicleta*)vec[i];
-                fout<<(*B);
+                fout << (*B);
             }
             else
             {
@@ -1644,7 +1644,7 @@ int main()
                 if (M)
                 {
                     M = (motocicleta*)vec[i];
-                    fout<<(*M);
+                    fout << (*M);
                 }
                 else
                 {
@@ -1652,7 +1652,7 @@ int main()
                     if (A)
                     {
                         A = (automobil*)vec[i];
-                        fout<<(*A);
+                        fout << (*A);
                     }
                 }
             }
