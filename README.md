@@ -1,4 +1,2 @@
-# auto-service-v2
-This OOP project deals with car malfunction.
-Input: Issues for each part of the vehicle(car, moto, bicycle).
-Output: The price of fixing that includes components and manufacturing.
+# Auto Service
+An OOP project which deals with vehicle malfunctions. The types of vehicle are illustrated in a simple hierachy: bycicle, motocycle, car are derived from vehicle, but each other has complex atributes.
